@@ -15,8 +15,9 @@ git submodule update --init --recursive
 ```bash
 cd ../..
 cd Docker
-source build.sh
+source build_mac.sh
 ```
+(use build_mac or build_windows, depending on the platform)
 
 3. Run the following command to lunch the docker:
 ```bash

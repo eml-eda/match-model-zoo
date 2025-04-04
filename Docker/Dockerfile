@@ -1,6 +1,6 @@
 # Container for running Vivado on M1/M2 macs
 # though it should work equally on Intel macs
-FROM --platform=linux/amd64 ubuntu:22.04
+FROM ubuntu:22.04
 SHELL ["/bin/bash", "-c"]
 # Setting values for tzdata
 ENV DEBIAN_FRONTEND=noninteractive
@@ -57,15 +57,15 @@ RUN sh -c 'echo "user:pass" | chpasswd'
 RUN chown -R user:user /home/user
 
 # Set the locale, because Vivado crashes otherwise
-ENV LANG en_US.UTF-8
-ENV LANGUAGE en_US:en
-ENV LC_ALL en_US.UTF-8
+ENV LANG=en_US.UTF-8
+ENV LANGUAGE=en_US:en
+ENV LC_ALL=en_US.UTF-8
 
 # Without this, XQuartz doesn't display the window correctly
 # if it doesn't work, add -Dsun.java2d.pmoffscreen=false, but this breaks something else
-ENV JAVA_TOOL_OPTIONS -Dsun.java2d.xrender=false
-ENV JAVA_OPTS -Dsun.java2d.xrender=false
-ENV DISPLAY host.docker.internal:0
+ENV JAVA_TOOL_OPTIONS=-Dsun.java2d.xrender=false
+ENV JAVA_OPTS=-Dsun.java2d.xrender=false
+ENV DISPLAY=host.docker.internal:0
 
 # Set Python to 3.10
 RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 10
