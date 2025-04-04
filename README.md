@@ -21,6 +21,8 @@ source build_mac.sh
 
 3. Run the following command to lunch the docker:
 ```bash
+cp run.sh ../
+cd ..
 source run.sh
 ```
 
@@ -35,7 +37,7 @@ make gvsoc
 ```bash
 cd .. 
 cd match
-make build_tvm -j4
+make build_tvm_single_core
 ```
 
 ## TO DO: STOP HERE FOR NOW
